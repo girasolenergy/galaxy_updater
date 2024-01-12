@@ -61,7 +61,8 @@ class Updater(object):
     def __init__(self, requirement_file):
         self.requirement_file = requirement_file
         with open(requirement_file, 'r') as f:
-            self.reqs = ruamel.yaml.load(f, ruamel.yaml.RoundTripLoader)
+            yaml = ruamel.yaml.YAML(typ='rt')
+            self.reqs = yaml.load(f)
 
     def _pattern_in_src(self, src, pattern):
         for pat in pattern:
@@ -126,7 +127,8 @@ class Updater(object):
         if replace_inline:
             # Modify existing file
             with open(self.requirement_file, 'w') as f:
-                f.write(ruamel.yaml.dump(self.reqs, Dumper=ruamel.yaml.RoundTripDumper))
+                yaml = ruamel.yaml.YAML(typ='rt')
+                f.write(yaml.dump(self.reqs))
 
         return output
 
