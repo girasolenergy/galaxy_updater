@@ -28,7 +28,7 @@ setup(
                  'galaxy_updater'},
     include_package_data=True,
     install_requires=[
-                      'ruamel.yaml==0.11.15', # Last py26 version
+                      'ruamel.yaml==0.18.5',
                       'future',
                       'requests'
                      ],
